@@ -1,0 +1,39 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace student_result
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int sub1, sub2, sub3, total;
+            {
+                Console.WriteLine("enter the subject_1 marks");
+                sub1 = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("enter the Subject_2 marks");
+                sub2 = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("enter the Subject_3 marks");
+                sub3 = Convert.ToInt32(Console.ReadLine());
+                total = sub1 + sub2 + sub3;
+                Console.WriteLine("The total marks is:{0}", total);
+                {
+                    if (total < 49)
+                        Console.WriteLine("The student is Fail");
+
+                    else if (total > 50)
+                        Console.WriteLine("The student is pass");
+
+
+                }
+            }
+
+        }
+    }
+}
+
+    
+
