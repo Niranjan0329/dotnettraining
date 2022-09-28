@@ -1,0 +1,45 @@
+Struct(28-09-2022)
+
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http.Headers;
+using System.Security.Cryptography;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace dotnetday3
+{ 
+ struct student
+
+{
+    public int marks1;
+
+    public int marks2;
+
+}
+
+
+class structureeg
+{
+   static void Main()
+    {
+        student s1 = new student();
+        s1.marks1 = 50;
+        s1.marks2 = 90;
+        Console.WriteLine(s1.marks1 + s1.marks2);
+            student s2 = new student();
+            s2.marks1 = 100;
+            s2.marks1 = 200;
+            Console.WriteLine(s2.marks1 + s2.marks2);
+            {
+
+                Console.ReadKey();
+
+            }
+
+
+        }
+} 
+}
