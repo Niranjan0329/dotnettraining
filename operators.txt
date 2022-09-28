@@ -1,0 +1,34 @@
+//operators assignment 3
+using System;
+using System.Collections.Generic;
+using System.Data.SqlTypes;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace possitiveornagative
+{
+    class operators
+    {
+        static void Main()
+        {
+            int a, b, c, d, e, f;
+            Console.WriteLine("enter first value");
+            a = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("enter the second value");
+            b = Convert.ToInt32(Console.ReadLine());
+            c = a + b;
+            d = a - b;
+            e = a * b;
+            f = a / b;
+            Console.WriteLine("the additional value : {0}", c);
+            Console.WriteLine("the subraction value is : {0}",d);
+            Console.WriteLine("the multiplication value is :{0}", e);
+            Console.WriteLine("the division value :{0}", f);
+
+
+
+        }
+    }
+}
+
