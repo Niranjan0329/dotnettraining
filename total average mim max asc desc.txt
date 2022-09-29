@@ -1,0 +1,95 @@
+2.    Write a program in C# to accept ten marks and display the
+
+        following
+
+a.    Total
+
+b.    Average
+
+c.    Minimum marks
+
+d.    Maximum marks
+
+e.    Display marks in ascending order
+
+f.    Display marks in descending order
+
+
+
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace assending_and_dessending
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int i = 0;
+            int total = 0;
+            int average = 0;
+            int min = 0;
+            int max = 0;
+            int assending = 0;
+            int dessending = 0;
+
+            int[] myarr = new int[] { 10, 20, 30, 50, 50, 60, 45, 75, 30, 10,1,9 };
+            
+
+            
+            for (i = 0; i < myarr.Length; i++)
+            { 
+            
+                //Total of teh given array
+                total += myarr[i];
+                
+                
+
+
+            }
+            Console.WriteLine("the total of the given array: " + total);
+            //average of the given array
+            average=total/myarr.Length;
+            
+            Console.WriteLine("The average of given array is : " + average);
+            //Maximum of the given array
+            Console.WriteLine("Maximum value in the given array : " + myarr.Max());
+            //Minimum of the given array
+            Console.WriteLine("Minimum value in the given array : " + myarr.Min());
+
+            Console.WriteLine("Original array");
+            foreach(int x in myarr)
+            {
+                Console.WriteLine(x);
+            }
+            
+            
+            // Sort array in ASC order
+            Console.WriteLine("Sorted array in ASC order");
+            Array.Sort(myarr);
+            foreach (int x in myarr)
+            {
+                Console.Write(x + " ");
+            }
+            Console.WriteLine();
+            
+            Console.WriteLine("Sorted array in DESC order");
+            
+            // Sort Array in DESC order
+            Array.Reverse(myarr);
+            foreach (int x in myarr)
+            {
+                Console.Write(x + " ");
+            }
+            Console.WriteLine();
+            
+
+        }
+    }
+}
+
+
