@@ -1,0 +1,36 @@
+Write a  Program to assign integer to an array and then print the following
+   a.Average value of Array elements
+   b.Minimum and Maximum value in an array
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Xml.Linq;
+
+namespace average_in_arrays
+{
+    class Program
+    {
+        //avareage value
+        static void Main(string[] args)
+
+        {
+            int[] arr = new int[5] { 10, 20, 30, 40, 50 };
+            int i = 0;
+            int sum = 0;
+            int avarage = 0;
+
+            for (i = 0; i < 5; i++)
+            {
+                sum += arr[i];
+                avarage = sum / 5;
+            }
+            Console.WriteLine("average value is : " + avarage);
+            Console.WriteLine("minimum value is: " + arr.Min());
+            Console.WriteLine("minimum value is: " + arr.Max());
+        }
+    }
+}
