@@ -1,0 +1,22 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace celsius
+{
+     class program2
+    {
+        static void Main(string[] args)
+        {
+            int celsius, fahrenheit;
+            Console.WriteLine("enter the celsius value");
+            celsius = Convert.ToInt32(Console.ReadLine());
+            fahrenheit=( (celsius * 9) / 5 + 32);
+            Console.WriteLine("the fahrenheit is {0} ", fahrenheit);
+
+
+        }
+    }
+}
