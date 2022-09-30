@@ -1,0 +1,49 @@
+4. Write a program in C# to accept a word and to find out whether the given word is a palindrome or not.
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace String_Palindrome_is_or_not
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string name, revs="";
+            Console.WriteLine("enter the value");
+         name = Console.ReadLine();
+
+            for (int i = name.Length-1; i >= 0; i--)
+            
+                revs += name[i];
+               
+               
+
+
+                if (revs == name)
+
+                
+                    Console.WriteLine("the name is Palindrome ");
+            
+                
+                else
+
+                    Console.WriteLine("the name is not Palindrome");
+                   
+
+                }
+       
+            }
+       }
+    
+    
+
+
+    
+        
+    
+
