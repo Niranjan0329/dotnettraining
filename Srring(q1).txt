@@ -1,0 +1,82 @@
+Strings Assignment
+
+1.    Write a program in C# to accept a word from the user and display the length of it.
+
+2.    Write a program in C# to accept a word from the user and display the reverse of it.
+
+3.    Write a program in C# to accept two words from user and find out if they are same.
+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Xml.Linq;
+
+namespace string_program
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string name, name1, revname, revname1;
+            int i, j;
+
+
+
+            Console.WriteLine("enter the first value");
+            name = Console.ReadLine();
+            Console.WriteLine("enter the second value");
+            name1 = Console.ReadLine();
+            Console.WriteLine("String length of first value : " + name.Length);
+            Console.WriteLine("String length of second value : " + name1.Length);
+
+            Console.ReadKey();
+
+            string Revname = "Reverse order of first value : ";
+            string Revname1 = "Reverse value of second value : ";
+
+            {
+                for (i = name.Length - 1; i >= 0; i--)
+
+                    Revname = Revname + name[i];
+                {
+                    for (j = name1.Length - 1; j >= 0; j--)
+
+                        Revname1 = Revname1 + name1[j];
+
+
+                    Console.WriteLine(Revname);
+                    Console.WriteLine(Revname1);
+
+                    if (name.Length == name1.Length)
+                    {
+                        Console.WriteLine("the values are equal");
+                    }
+
+
+                    else if (name.Length != name1.Length)
+                    {
+                        Console.WriteLine("The values are not equal");
+                    }
+
+
+
+
+
+
+
+
+
+                    }
+                    }
+                }
+            }
+        }
+   
+
+
