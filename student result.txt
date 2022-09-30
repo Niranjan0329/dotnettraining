@@ -1,0 +1,124 @@
+2.Create a class called student which has data members like rollno, name, class, Semester, branch, int[] marks = new int marks [5] (marks of 5 subjects )
+
+
+
+-Pass the details of student like rollno, name, class, SEM, branch in constructor
+- For marks write a method called GetMarks() and give marks for all 5 subjects
+-Write a method called displayresult, which should calculate the average marks
+-If marks of any one subject is less than 35 print result as failed
+-If marks of all subject is >35 but average is < 50 then also print result as failed
+-If avg > 50 then print result as passed.
+-Write a DisplayData() method to display all values
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace student_result
+{
+    class student
+
+    {
+        public int rollno,Class,semister,sub1,sub2,sub3,sub4,sub5;
+            string name,branch;
+
+
+        public student(string name1, string branch1, int rollno1, int semister1, int class1)
+        {
+            Console.WriteLine("enter the student name");
+            name1 = Console.ReadLine();
+            Console.WriteLine("enter the student branch");
+            branch1 = Console.ReadLine();
+            Console.WriteLine("enter the sutdent roll number");
+            rollno1 = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("enter the student semister");
+            semister1 = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("enter the class of the student");
+            class1 = Convert.ToInt32(Console.ReadLine());
+            name1 = name;
+            branch1 = branch;
+            rollno1 = rollno;
+            semister1 = semister;
+            class1 = Class;
+        }
+
+            
+                public void Getmarks()
+        {
+            
+            Console.WriteLine("enter the marks sub1 : ");
+            sub1 = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("enter the marks sub2 : ");
+            sub2 =Convert.ToInt32(Console.ReadLine()) ;
+            Console.WriteLine("enter the marks sub3 : ");
+            sub3 = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("enter the marks 4 :" );
+            sub4 = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("enter the marks sub5 : ");
+            sub5 = Convert.ToInt32(Console.ReadLine());
+            int[] marks = new int[5];
+            marks[0] = sub1;
+            marks[1] = sub2;
+            marks[2] = sub3;
+            marks[3] = sub4;
+            marks[4] = sub5;
+
+        }
+        public void DisplayResults()
+        {
+            int sum;
+            int average = 0;
+            sum = sub1 + sub2 + sub3 + sub4 + sub5;
+            average = sum / 5;
+            
+            if (sub1 < 35)
+            {
+                Console.WriteLine("student is fail ");
+            }
+            else if (sub2 < 35)
+            {
+                Console.WriteLine("Student is fail");
+            }
+            else if (sub3 < 35)
+            {
+                Console.WriteLine("Student is fai ");
+            }
+            else if (sub4 < 35)
+            {
+                Console.WriteLine("Student is fail ");
+            }
+            else if (sub5 < 35)
+            {
+                Console.WriteLine("Student is fail ");
+            }
+            else if (sum > 35 && average < 50)
+            {
+                Console.WriteLine("Student is failed ");
+            }
+            else if (average > 50)
+            {
+                Console.WriteLine("Student is passed");
+            }
+            
+
+
+        }
+        static void Main(string[] args)
+        {
+            student student = new student("","",0,0,0);
+            student.Getmarks(); 
+            student.DisplayResults();
+            Console.ReadLine();
+
+
+        }
+
+        }
+    }
+
+
+        
