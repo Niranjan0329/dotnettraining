@@ -1,0 +1,141 @@
+/*1.Create a class called Accounts which has data members like Account no, Customer name, Account type, Transaction type (d/w), amount, balance
+D->Deposit
+W->Withdrawal
+-write a function that updates the balance depending upon the transaction type
+   -If transaction type is deposit call the credit(int amount) function and update balance
+    -If transaction type is withdraw call debit(int amt)function and update balance
+-Pass the other information like Acount no, name, acc type through constructor
+-call the show data method to display the values.*/
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.AccessControl;
+using System.Text;
+using System.Threading.Tasks;
+using withdrawl_credit;
+
+namespace withdrawl_credit
+{
+    class Accounts
+    {
+        public double accountno;
+        public double balance;
+        public string customername;
+        public string accounttype;
+        public string transactiontype;
+        public double creditamount;
+        public double debitamount;
+
+
+        public Accounts(string customernm, string accountty, string transactionty, double balance1)
+
+        {
+            customername = customernm;
+            accounttype = accountty;
+            transactiontype = transactionty;
+            balance = balance1;
+
+
+            Console.WriteLine("enter the name");
+            Console.ReadLine();
+            Console.WriteLine("enter the account type it its savings or current");
+            Console.ReadLine();
+            balance = 1000;
+            Console.ReadLine();
+
+
+
+
+
+
+
+        }
+        public void Credit()
+        {
+
+            Console.WriteLine("Enter the amount to deposit to your account: ");
+            int creditamount = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Your available balance is :{0} ", +(balance + creditamount));
+            Console.ReadLine();
+
+
+
+
+
+
+
+        }
+
+        public void Debit()
+        {
+            Console.WriteLine("Enter the amount to withdrawal from your account: ");
+            int debitamount = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Your available balance is :{0} ", +(balance - debitamount));
+            Console.ReadLine();
+
+        }
+
+        public void Displaydetails()
+        {
+            Console.WriteLine("Account holder name is {0}", customername);
+            Console.WriteLine("Account number {0}", accountno);
+            Console.WriteLine("account type {0}", accounttype);
+
+
+
+        }
+
+    }
+
+
+
+
+
+    class program
+    {
+
+
+
+        static void Main(string[] args)
+        {
+            Accounts act = new Accounts("", "", "", 0);
+
+            Console.ReadKey();
+            Console.WriteLine("Select the type of transaction type 1)Deposit 2)Withdrawal :");
+            string Dw = (Console.ReadLine());
+
+
+            if (Dw == "Deposit")
+            {
+                act.Credit();
+                Console.ReadLine();
+            }
+            else if (Dw == "Withdrawal")
+            {
+                act.Debit();
+                Console.ReadLine();
+            }
+            {
+
+                act.Credit();
+                act.Debit();
+
+                act.Displaydetails();
+            }
+        }
+    }
+}
+
+
+    
+            
+
+
+
+
+    
+
+
+
