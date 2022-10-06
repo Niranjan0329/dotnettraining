@@ -1,0 +1,56 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
+using System.Security.Cryptography.X509Certificates;
+using System.Text;
+using System.Threading.Tasks;
+using System.Xml.Serialization;
+
+namespace sales_details
+{
+     class Salesdetails
+    {
+        int salesnumber, Productnumber, Quantity;
+        double Price, Totalamount;
+        DateTime Dateofsale;
+
+        public void Sales(int qnt, double pricedts)
+        {
+            Totalamount = 0;
+            int Quantity = 10;
+            double Price = 50;
+            Console.WriteLine("=======The total price======");
+
+            Console.WriteLine("The total quantity : " + Quantity);
+           
+            Console.WriteLine("the price : "+Price);
+
+            Totalamount =(Quantity * Price);
+            Console.WriteLine("the total amount is : {0}",Totalamount); 
+        }
+        public void Getresults(int salesnu ,int productionno,double datetime)
+        {
+           
+          
+            Console.WriteLine("=====the sales details====");
+
+            int salesnumber = 2;
+            int Productnumber = 10;
+
+            Double Dateofsale = 12_03_2022;
+            Console.WriteLine("the sales number :" + salesnumber);
+            Console.WriteLine("the production number:" + Productnumber);
+            Console.WriteLine("the date of sale is:" + Dateofsale);
+
+        }
+
+        static void Main(string[] args)
+        {
+       Salesdetails sales2 = new Salesdetails();
+           sales2.Getresults(0, 0,00 );
+            Salesdetails salesdetails = new Salesdetails();
+            salesdetails.Sales(0, 0);
+        }
+    }
+}
