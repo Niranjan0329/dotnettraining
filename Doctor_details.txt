@@ -1,0 +1,40 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
+
+namespace Docter_Details
+{
+   
+        class Doctor
+        {
+            private int RegisterNo { get; set; }
+            private string Name { get; set; }
+            private double FeesCharged { get; set; }
+
+            public void Set()
+            {
+                RegisterNo = Convert.ToInt32(Console.ReadLine());
+                Name = Console.ReadLine();
+                FeesCharged = Convert.ToDouble(Console.ReadLine());
+            }
+            public void Get()
+            {
+                Console.WriteLine("Registration number is : " + RegisterNo);
+          
+                Console.WriteLine("Name is :" + Name);
+                Console.WriteLine("Fees charged : " + FeesCharged);
+            }
+            static void Main(string[] args)
+            {
+                Doctor doctor = new Doctor();
+                Console.WriteLine("enter registration number,name,Fess charged");
+                doctor.Set();
+                doctor.Get();
+                Console.Read();
+            }
+        }
+    }
+
