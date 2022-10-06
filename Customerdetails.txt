@@ -1,0 +1,48 @@
+using System;
+
+namespace Customer_details
+
+{
+    class Customer
+    {
+        public int Customerid;
+        public string CustomerName;
+        public int CustomerAge;
+        public long CustomerPhone;
+        public string CustomerCity;
+       public Customer()
+        {
+
+        }
+        public Customer(int Cstid, string name, int ag, long ph, string cty)
+        {
+            Customerid = Cstid;
+            CustomerName = name;
+            CustomerAge = ag;
+            CustomerPhone = ph;
+            CustomerCity = cty;
+        }
+        public void DisplayDetails()
+        {
+            Console.WriteLine("the customer id = " + Customerid);
+            Console.WriteLine("the customer name is = " + CustomerName);
+            Console.WriteLine("customer age is = " + CustomerAge);
+            Console.WriteLine("the customer Phone is = " + CustomerPhone);
+            Console.WriteLine("the customer city is = " + CustomerCity);
+
+        }
+        ~Customer()
+        {
+
+        }
+
+
+        static void Main(string[] args)
+        {
+            Customer csm = new Customer(1, "Niranjan k", 39,8150897553, "tumkur");
+            csm.DisplayDetails();
+            Console.Read();
+
+        }
+    }
+}
