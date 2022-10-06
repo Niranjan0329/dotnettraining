@@ -1,0 +1,29 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace upper_program
+{
+    class upper1
+
+    { 
+       
+        
+
+        
+        public static void Main(string[] args)
+        { 
+            string Firstname = "Niranjan";
+            string Secondname = "gowda";
+            string uppersecondname = Secondname.ToUpper();
+            Console.WriteLine(Firstname);
+            Console.WriteLine(uppersecondname);
+
+
+
+        }
+    }
+}
