@@ -1,0 +1,20 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace occurrences_program
+{
+     class Program
+    {
+        static void Main(string[] args)
+        {
+            string str =( "niranjan");
+            char ch = 'a';
+            int name=str.Count(f=>(f==ch));
+            Console.WriteLine( ch +""+ " occurrences " + name);
+            
+        }
+    }
+}
