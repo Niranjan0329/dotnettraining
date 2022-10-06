@@ -1,0 +1,60 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Scholarship
+{
+    
+    
+        class Scholarship
+        {
+            public int Totalmarks;
+            public float Fees;
+            public double Scholarshipamt;
+
+            public float Student(int marks, float fees)
+            {
+                if (marks >= 70 && marks <= 80)
+                {
+                    Scholarshipamt = fees * 0.2;
+                    Console.WriteLine("Schlorship amount is : " + Scholarshipamt);
+
+                }
+
+                else if (marks > 80 && marks <= 90)
+                {
+                    Scholarshipamt = fees* 0.3;
+                    Console.WriteLine("Schlorship amount is : " + Scholarshipamt);
+
+                }
+                else if (marks> 90)
+                {
+                    Scholarshipamt = fees * 0.5;
+                    Console.WriteLine("Schlorship amount is : " + Scholarshipamt);
+
+                }
+                else
+
+                {
+                    Console.WriteLine("Not eligible for scholar ship");
+                    Console.WriteLine(" Eligible Schlorship amount is : " + Scholarshipamt);
+
+                }
+
+                return (float)Scholarshipamt;
+            }
+
+            static void Main(string[] args)
+            {
+                Scholarship abc= new Scholarship();
+                Console.WriteLine("Enter total marks = ");
+                abc.Totalmarks = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Enter the fees = ");
+                abc.Fees = Convert.ToInt32(Console.ReadLine());
+                abc.Student(abc.Totalmarks, abc.Fees);
+                Console.Read();
+            }
+        }
+    }
