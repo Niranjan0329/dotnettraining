@@ -1,0 +1,63 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Assignment__4_1st_question
+{
+    abstract class Student
+        
+    {
+
+        public void name()
+        {
+            Console.WriteLine("enter the name");
+            Console.ReadLine();
+
+        }
+        public void stdid()
+        {
+            Console.WriteLine("enter the student id");
+            Console.ReadLine();
+        }
+        public void Grade()
+        {
+            int grade = 0;
+            Console.WriteLine("enter the grade");
+            Console.ReadLine();
+            if(grade >= 40)
+            {
+                Console.WriteLine("the student is pass" );
+            }
+            else
+                    {
+                Console.WriteLine("the student is fail" );
+            }
+               
+          
+              
+        }
+
+    }
+     
+    class student1:Student
+    {
+
+    
+        static void Main(string[] args)
+        {
+
+            student1 student12 = new student1();
+            student12.name();
+            student12.stdid();
+            student12.Grade();
+
+
+
+
+        }
+
+
+    }
+}
