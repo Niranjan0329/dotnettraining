@@ -1,0 +1,65 @@
+using System;
+
+namespace ticketbooking
+{
+    class ticketBookingException : ApplicationException
+    {
+        public ticketBookingException(string msg) : base(msg)
+        {
+
+        }
+    }
+
+    class Passangerdetails
+    {
+        public int Age;
+        public int nooftickets;
+        public string Name;
+
+        public void PassengerDetails()
+        {
+            Console.WriteLine("Enter the Number of tickets : ");
+            nooftickets = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("Enter the name of Passanger : ");
+            Name = Console.ReadLine();
+
+            Console.WriteLine("Enter Age :");
+            Age = Convert.ToInt32(Console.ReadLine());
+
+            TicketBooking(nooftickets);
+        }
+
+        public void TicketBooking(int nooftickets)
+        {
+            this.nooftickets = nooftickets;
+
+            if (nooftickets > 2)
+            {
+                throw (new ticketBookingException("cannot book more than 2 tickets"));
+            }
+            else
+            {
+                Console.WriteLine("Ticket Booked Successfully");
+            }
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Passangerdetails obj = new Passangerdetails();
+
+            try
+            {
+                obj.PassengerDetails();
+            }
+            catch (ticketBookingException te)
+            {
+                Console.WriteLine(te.Message);
+            }
+            Console.ReadKey();
+        }
+    }
+}

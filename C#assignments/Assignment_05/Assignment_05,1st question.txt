@@ -1,0 +1,78 @@
+using System;
+
+namespace student_result
+{
+    abstract class Student
+    {
+        public string name;
+        public int studentId;
+        public float grade;
+
+        public abstract bool Ispassed(float grade);
+    }
+
+    class Undergraduate : Student
+    {
+
+        public override bool Ispassed(float grade)
+        {
+            if (grade > 70.0f)
+            {
+                Console.WriteLine("Under Graduate student got Passed");
+                return true;
+            }
+            else
+            {
+                Console.WriteLine("Under Graduate student got Failed");
+                return false;
+            }
+        }
+    }
+
+    class Graduate : Student
+    {
+        public override bool Ispassed(float grade)
+        {
+            if (grade > 80.0f)
+            {
+                Console.WriteLine("Graduate student Passed");
+                return true;
+            }
+            else
+            {
+                Console.WriteLine("Graduate student Failed");
+                return false;
+            }
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            
+            Student s1 = new Undergraduate();
+            Console.WriteLine("=======undergraduate student result========");
+            Console.Write("Enter Name of Undergraduate Student : ");
+            s1.name = Console.ReadLine();
+            Console.WriteLine("Enter Id of Undergraduate Student : ");
+            s1.studentId = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Enter Grade of Undergraduate Student : ");
+            s1.grade = Convert.ToSingle(Console.ReadLine());
+            s1.Ispassed(s1.grade);
+
+            Console.WriteLine("=====Graduate student results=====");
+
+            Student s2 = new Graduate();
+            Console.Write("Enter Name of Graduate Student : ");
+            s2.name = Console.ReadLine();
+            Console.WriteLine("Enter Id of Graduate Student : ");
+            s2.studentId = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Enter Grade of Graduate Student : ");
+            s2.grade = Convert.ToSingle(Console.ReadLine());
+            s2.Ispassed(s2.grade);
+
+            Console.ReadKey();
+        }
+    }
+}

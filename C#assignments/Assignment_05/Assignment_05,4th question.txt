@@ -1,0 +1,71 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace interface1
+{
+    interface IStudent
+    {
+        void print();
+
+    }
+    public class DayScholar : IStudent
+    {
+        public void print()
+        {
+            Console.WriteLine("The student name is : Niranjan");
+           // Console.ReadLine();
+        }
+
+
+
+
+
+    }
+   
+    public class Residence: IStudent
+    {
+        public void print()
+        {
+            Console.WriteLine("Student id is: 10 ");
+            
+        }
+       
+
+
+
+
+
+        public class program
+        {
+
+
+
+            static void Main(string[] args)
+
+            {
+                Console.WriteLine("======Display Results=======");
+                
+                
+                DayScholar d1 = new DayScholar();
+
+                d1.print();
+
+                Residence d2 = new Residence();
+
+                d2.print();
+                Console.ReadKey();
+
+
+
+                
+               
+            }
+        }
+    }
+}
+
+
+
