@@ -1,0 +1,69 @@
+
+/*Question2
+Create a structure 
+struct Books
+   private string title;
+private string author;
+private string subject;
+private int book_id;
+Include 2 methods called GetValues() and ShowValues() to accept and display details.
+
+create a Class called TestStructures that invokes the above methods of the structure to accept and display the details of the book*/
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+namespace Program2
+{
+
+    public struct Books
+    {
+        string Title;
+        string Author;
+        string Subject;
+        int Book_id;
+
+
+        public void GetValues()
+        {
+            Console.WriteLine("Enter the title of the book : ");
+            Title = Console.ReadLine();
+            Console.WriteLine("Enter the author of the book : ");
+            Author = Console.ReadLine();
+            Console.WriteLine("Enter the subject : ");
+            Subject = Console.ReadLine();
+            Console.WriteLine("Enter the book ID : ");
+            Book_id = Convert.ToInt32(Console.ReadLine());
+
+
+        }
+        public void ShowValues()
+        {
+            Console.WriteLine("Title of the book : " + Title);
+            Console.WriteLine("Author of the book is: " + Author);
+            Console.WriteLine("subject : " + Subject);
+            Console.WriteLine("Book Id is : " + Book_id);
+        }
+    }
+
+
+
+    class TestStructures
+    {
+
+        static void Main()
+        {
+            Books books = new Books();
+
+            
+            books.GetValues();
+            Console.WriteLine("******Display the output******");
+            books.ShowValues();
+            Console.Read();
+        }
+    }
+}

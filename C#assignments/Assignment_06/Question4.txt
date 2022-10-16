@@ -1,0 +1,55 @@
+
+
+/*Question_4
+Create a simple Stationery application to add items and display added items using Generic List collections*/
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Assignment_06_04
+{
+   public class StationaryApplication
+        {
+            static void Main(string[] args)
+            {
+                List<string> list = new List<string>();
+                list.Add("Ball Pen Reynolds");
+                list.Add("Brown Tape ");
+                list.Add("Paper cutter ");
+                list.Add("Dak Pad ");
+                list.Add("Hammer");
+                list.Add("Log book ");
+                list.Add("Needle ");
+                list.Add("Plastic folder ");
+                list.Add("Slip Book");
+                list.Add("Sutli Jute ");
+                list.Add("Thread Ball");
+                list.Add("Pencil Cell ");
+                list.Add("File Board");
+                list.Add("File Cover");
+                list.Add("Ladies purse");
+                list.Add("Towel Car Size ");
+                list.Add("Lux Soap ");
+                list.Add("Wiper");
+
+
+                Console.WriteLine("***The list of the Stationaries***");
+
+                foreach (object SA in list)
+                {
+                    Console.WriteLine(SA);
+                }
+
+                     Console.ReadLine();
+
+
+
+            }
+        }
+    }
+
+

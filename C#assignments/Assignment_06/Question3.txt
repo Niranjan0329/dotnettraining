@@ -1,0 +1,149 @@
+
+/*Question_3
+Create a Class called Products with Productid, Product Name, Price. Accept 10 Products, 
+    sort them based on the price, and display the sorted Products*/
+
+
+using Assignment_06_03;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Cryptography.X509Certificates;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Assignment_06_03
+{
+    public class Product
+    {
+        public int Productid { get; set; }
+        public string ProductName { get; set; }
+        public double ProductPrice { get; set; }
+        public class SortByProductprice : IComparer<Product>
+        {
+            public int Compare(Product x, Product y)
+            {
+                return x.ProductPrice.CompareTo(y.ProductPrice);
+            }
+        }
+        public class program
+    {
+        public static void Main()
+        {
+            
+                Product product1 = new Product()
+                {
+                    Productid = 1,
+                    ProductName = "sugar",
+                    ProductPrice = 45
+                };
+                Product product2 = new Product()
+                {
+                    Productid = 2,
+                    ProductName = "Millet",
+                    ProductPrice = 50
+                };
+                Product product3 = new Product()
+                {
+                    Productid = 3,
+                    ProductName = "Salt",
+                    ProductPrice = 10
+                };
+                Product product4 = new Product()
+                {
+                    Productid = 4,
+                    ProductName = "Oil",
+                    ProductPrice = 200.00
+                };
+                Product product5 = new Product()
+                {
+                    Productid = 5,
+                    ProductName = "Rice",
+                    ProductPrice = 100
+                };
+                Product product6 = new Product()
+                {
+                    Productid = 6,
+                    ProductName = "Eggs ",
+                    ProductPrice = 6.00
+                };
+                Product product7 = new Product()
+                {
+                    Productid = 7,
+                    ProductName = "Honey ",
+                    ProductPrice = 300.00
+                };
+            Product product8 = new Product()
+            { 
+                    Productid = 8,
+                    ProductName = "Ragi ",
+                    ProductPrice = 30.00
+                };
+                Product product9 = new Product()
+                {
+                    Productid = 9,
+                    ProductName = " Walnut ",
+                    ProductPrice = 100.00
+                };
+                Product product10 = new Product()
+                {
+                    Productid = 10,
+                    ProductName = "Coconut Oil ",
+                    ProductPrice = 60.00
+                };
+            
+            List<Product> listproduct = new List<Product>();
+            listproduct.Add(product1);
+            listproduct.Add(product2);
+            listproduct.Add(product3);
+            listproduct.Add(product4);
+            listproduct.Add(product5);
+            listproduct.Add(product6);
+            listproduct.Add(product7);
+            listproduct.Add(product8);
+            listproduct.Add(product9);
+            listproduct.Add(product10);
+
+
+            Console.WriteLine("The Product list");
+
+            foreach (Product product in listproduct)
+            {
+                Console.WriteLine("Productid={0}, ProductName ={1},ProductPrice={2}",product.Productid,product.ProductName,product.ProductPrice);
+            }
+                SortByProductprice sortbyprice = new SortByProductprice();
+                listproduct.Sort(sortbyprice);
+
+
+                Console.WriteLine("**************************");
+
+
+                Console.WriteLine("Sorting the product based on ProductPrice");
+
+
+                foreach(Product product in listproduct)
+                {
+                    Console.WriteLine("Productid={0}, ProductName ={1}, ProductPrice={2}", product.Productid, product.ProductName, product.ProductPrice);
+                }
+                Console.ReadKey();
+           
+        }
+    }
+
+
+    
+
+        }
+    }
+
+
+
+
+
+ 
+
+   
+
+
+
+

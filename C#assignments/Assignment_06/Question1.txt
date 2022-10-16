@@ -1,0 +1,96 @@
+/*Question_1
+Create a class called Books with BookName and AuthorName members. Instantiate the class through constructor
+and also write a method Display() to display the details. Create an Indexer of Books Object to store 5 books in a class called BookShelf.
+(Hint : Use Composition.Books object inside BookShelf class)*/
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+namespace Program1
+{
+    class Books
+    {
+        string[] BookName = new string[5];
+        string[] AuthorName = new string[5];
+
+        public string this[int SS]
+        {
+            get { string temp = BookName[SS]; return temp; }
+            set { BookName[SS] = value; }
+
+        }
+        public string this[long NN]
+        {
+            get
+            {
+                string temp = AuthorName[NN];
+                return temp;
+            }
+            set { AuthorName[NN] = value; }
+        }
+
+        public void Display()
+        {
+
+                 Console.WriteLine("*************BookName and BookAuthors****************");
+                Console.WriteLine("Book name: {0} & Author name:{1}", BookName[0], AuthorName[0]);
+                Console.WriteLine("Book name: {0} & Author name:{1}", BookName[1], AuthorName[1]);
+                Console.WriteLine("Book name: {0} & Author name:{1}", BookName[2], AuthorName[2]);
+                Console.WriteLine("Book name: {0} & Author name:{1}", BookName[3], AuthorName[3]);
+                Console.WriteLine("Book name: {0} & Author name:{1}", BookName[4], AuthorName[4]);
+
+                Console.WriteLine();
+            
+        }
+
+    }
+
+
+    class BookShelf
+
+    {
+        Books book;
+        public static void SetBooks(Books book)
+        {
+
+           
+            book[0] = "Rajini’s Mantras";
+            book[1] = "Crimson Spring";
+            book[2] = "Science Behind Surya Namaskar";
+            book[3] = "India’s Economy From Nehru To Modi";
+            book[4] = "Lockdown Lyrics";
+          
+            book[0L] = "P.C. Balasubramanian";
+            book[1L] = "Crimson Spring";
+            book[2L] = "Dr Kalubhai";
+            book[3L] = "Pulapre Balakrishnan";
+            book[4L] = "Sanjukta Dash";
+            book.Display();
+        }
+
+
+        public BookShelf()
+        {
+            book = new Books();
+            SetBooks(book);
+        }
+
+
+    }
+    class DriverClass
+    {
+        static void Main()
+        {
+            BookShelf book = new BookShelf();
+            Console.Read();
+        }
+    }
+
+
+
+
+}
