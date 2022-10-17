@@ -1,0 +1,67 @@
+
+/*Question-1
+Write a program to find the Sum and the Average points scored by the teams in the IPL.
+ Create a Class called Cricket that has a function called Pointscalculation(int no_of_matches) that takes no.of matches as 
+input and accepts that many scores from the user. 
+ The function should then display the Average and Sum of the scores*/
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Xml.Schema;
+
+namespace Testquestion1
+{
+    internal class Cricket
+
+    {
+        public void pointsclacutation(int noofmatches)
+        {
+            int totalmatches;
+            int M1score;
+            int M2score;
+            int M3score;
+            int M4score;
+            int M5score;
+            int totalscore;
+            int average;
+          
+
+            Console.WriteLine("total matches play by the playes 1");
+            totalmatches = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("enter the score of first match");
+            M1score = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("enter the csore of the second match");
+            M2score = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("enter the score of third match ");
+            M3score = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("enter the score of fourth match ");
+            M4score = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("enter the score of fifth match ");
+            M5score = Convert.ToInt32(Console.ReadLine());
+
+            totalscore = M1score + M2score + M3score + M4score + M5score;
+
+
+            Console.WriteLine("*****The total Score is*****");
+            Console.WriteLine("the total score is :" + totalscore);
+            average =( totalscore / 5);
+            Console.WriteLine("*****the total average is******");
+            Console.WriteLine("the total average of score is:" + average);
+
+        }
+
+
+
+        static void Main(string[] args)
+        {
+           Cricket cricket = new Cricket();
+            cricket.pointsclacutation(0);
+            Console.ReadKey();
+
+        }
+
+    }
+}

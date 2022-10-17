@@ -1,0 +1,51 @@
+/*Question_2
+Write a class Box that has Length and breadth as its members. Write a function that adds 2 box objects and stores in the 3rd
+  Create a Test class to execute the above*/
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Xml.Schema;
+
+namespace Testquestion1
+{
+    internal class Box
+    {
+        public void box1(int length, int breath)
+        {
+            int total;
+            Console.WriteLine("enter the 1box length :");
+            length = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("enter the 1box breath :");
+            breath = Convert.ToInt32(Console.ReadLine());
+            total = length + breath;
+            Console.WriteLine("the total is:");
+            Console.WriteLine(total);
+            Console.ReadLine();
+        }
+        public void box2(int length, int breath)
+        {
+            int total;
+            Console.WriteLine("enter the 2box length :");
+            length = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("enter the 2box breath :");
+            breath = Convert.ToInt32(Console.ReadLine());
+            total = length + breath;
+            Console.WriteLine("the total 2nd box is:");
+            Console.WriteLine(total);
+            Console.ReadLine();
+        }
+            public static void Main()
+        {
+
+           Box box = new Box();
+            box.box1(0,0);
+            Console.ReadKey();
+                box.box2(0,0);
+                Console.ReadKey();
+
+
+        }
+    }
+}
