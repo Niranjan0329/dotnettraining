@@ -42,7 +42,7 @@ select * from Employee4
 select * from Employee4   where ENAME like'a%';
 
 --2.Select all those employees who don't have a manager.
-select * from Employee4 where JOB like'!=manager%';
+select * from Employee4 where JOB!='MANAGER'
 
 --3. List employee name, number and salary for those employees who earn in the range 1200 to 1400.
 select * from Employee4 where SAL between 1200 and 1400;
