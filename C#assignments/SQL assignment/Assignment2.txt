@@ -8,7 +8,7 @@ LOC varchar(20) );
 insert into dept values(10,'ACCOUNTING','NEW YORK'), 
 (20,'RESEARCH','DALLAS'), 
 (30,'SALES','CHICAGO'), 
-(40,'OPERATIONS','BOSTON') 
+(40,'OPERATIONS','BOSTON')  
 
 create table Employee4(EMPNO numeric(4),
 ENAME varchar(30),
@@ -50,12 +50,8 @@ select * from Employee4 where SAL between 1200 and 1400;
 
 --4. Give all the employees in the RESEARCH department a 10% pay rise.
 --Verify that this has been done by listing all their details before and after the rise. 
---before ruse
-select * from Employee4 a join dept b on a.DEPTNO=b.DEPTNO 
-where DNAME='research'
---ofter rise
-select sal+(sal*10/100) as hike_sal,a.* from Employee4 a join dept b on a.DEPTNO=b.DEPTNO 
-where DNAME='research'
+
+select EMPNO,ename,job,sal,(sal+sal*0.1)as 'rise salry' from Employee4 where DEPTNO=20 
 
 --5. Find the number of CLERKS employed. Give it a descriptive heading. 
 select count(*) from Employee4 where job='clerk'
@@ -90,10 +86,9 @@ where Employee4.DEPTNO is null
 select ename,sal from Employee4 where ename in('miller','smith')
 
 --12. Find out the names of the employees whose name begin with ‘A’ or ‘M’. 
---begin with 'a'
-select * from Employee4   where ENAME like'a%';
---begin with 'm'
-select * from Employee4   where ENAME like'm%';
+--begin with 'a' or 'm'
+select * from Employee4   where ENAME like'[a,m]%';
+
 
 --13. Compute yearly salary of SMITH. 
 select  sal*12 as "yearly salary",
