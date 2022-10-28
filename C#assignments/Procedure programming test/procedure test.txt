@@ -1,0 +1,40 @@
+create database test
+use test
+
+create table employee
+(id int,
+name varchar(20),
+salary money )
+insert into employee values(1,'niranjan',15000),
+(2,'gowda',20000),
+(3,'shree',15000)
+
+
+select * from employee
+
+
+
+create or alter  procedure payslip(@Empid int,@HRA money OUTPUT,@DA money OUTPUT,@PF money OUTPUT,@IT money output)
+as
+begin
+declare @salary money
+declare @Deduction money
+declare @Gross_salary money
+declare @Net_salary money
+select salary from employee where id=@Empid
+
+set @HRA=@salary*0.1
+set @DA=@salary*0.2
+set @PF=@salary*0.08
+set @IT=@salary*0.05
+set @Deduction=@PF+@IT
+set @Gross_salary=@salary+@HRA+@DA
+set @Net_salary=@Gross_salary-@Deduction
+end
+
+
+    Declare @VHRA money, @VDA money, @VPF money,@VIT money
+    EXEC payslip 1,@VHRA OUTPUT,@VDA OUTPUT,@VPF OUTPUT,@VIT OUTPUT
+    PRINT @Deduction
+    PRINT @Gross_salary 
+	PRINT @Net_salary

@@ -1,0 +1,152 @@
+create database assignment3
+use  assignment3
+
+create table departmet(
+DEPTNO int,
+DNAME varchar(20),
+LOC varchar(20) );
+
+insert into departmet values(10,'ACCOUNTING','NEW YORK'), 
+(20,'RESEARCH','DALLAS'), 
+(30,'SALES','CHICAGO'), 
+(40,'OPERATIONS','BOSTON') 
+
+create table Employee(EMPNO numeric(4),
+ENAME varchar(30),
+JOB varchar(20),
+MGRId int,
+HIREDATE date,
+SAL int,
+COMM int, 
+DEPTNO int) 
+
+insert into Employee values(7369,'SMITH','CLERK',7902,'1980-12-17',800,'',20),
+(7499,'ALLEN','SALESMAN',7698,'1981-02-20',1600,300,30),
+(7521,'WARD','SALESMAN',7698,'1981-02-22',1250,500,30),
+(7566,'JONES','MANAGER',7839,'1981-04-02',2975,'',20),
+(7654,'MARTIN','SALESMAN',7698,'1981-09-28',1250,1400,30),
+(7698,'BLAKE','MANAGER',7839,'1981-05-01',2850,'',30),
+(7782,'CLARK','MANAGER',7839,'1981-06-09',2450,'',10),
+(7788,'SCOTT','ANALYST',7566,'1987-04-19',3000,'',20),
+(7839,'KING','PRESIDENT','','1981-11-17',5000,'',10),
+(7844,'TURNER','SALESMAN',7698,'1981-09-08',1500,0,30),
+(7876,'ADAMS','CLERK',7788,'1987-05-23',1100,'',20),
+(7900,'JAMES','CLERK',7698,'1981-12-03',950,'',30),
+(7902,'FORD','ANALYST',7566,'1981-12-03',3000,'',20),
+(7934,'MILLER','CLERK',7782,'1982-01-23',1300,'',10)
+
+select * from departmet
+select * from Employee
+
+--1. Retrieve a list of MANAGERS. 
+select * from employee where job='manager'
+
+--2. Find out the names and salaries of all employees earning more than 1000 per month. 
+select ename,sal from employee where sal>1000
+
+--3. Display the names and salaries of all employees except JAMES. 
+select ename,sal from employee where ename !='james'
+
+--4. Find out the details of employees whose names begin with ‘S’. 
+select * from employee where ename like 's%'
+
+--5. Find out the names of all employees that have ‘A’ anywhere in their name. 
+select ename from employee where ename like'%a%'
+
+--6. Find out the names of all employees that have ‘L’ as their third character in their name. 
+select ename from employee where ename like'___l%'
+
+--7. Compute daily salary of JONES.
+select ename,(sal/31) as'per day salary'from employee where ename='jones'
+
+
+--8. Calculate the total monthly salary of all employees. 
+select sum(sal) as'total monthly salary'from employee 
+
+--9. Print the average annual salary . 
+select avg(Sal) as'avarage annual salary'  from employee
+
+--10. Select the name, job, salary, department number of all employees except 
+--SALESMAN from department number 30. 
+
+select ename, job,sal,employee.deptno
+from employee
+inner join
+departmet
+on employee.deptno=departmet.deptno
+where job !='salesman' and employee.deptno=30
+
+
+
+
+
+--11. List unique departments of the EMP table. 
+
+select distinct(dname),departmet.deptno from
+employee
+inner join
+departmet
+on employee.deptno=departmet.deptno
+
+
+
+--12. List the name and salary of employees who earn more than 1500 and are in department 10 or 30.
+--Label the columns Employee and Monthly Salary respectively.
+
+select ename,sal from employee
+where sal>1500 and deptno in (10,30)
+
+
+
+--13. Display the name, job, and salary of all the employees whose job is MANAGER or 
+--ANALYST and their salary is not equal to 1000, 3000, or 5000. 
+
+select ename,job,sal from employee
+where job in ('manager','analyst') and sal not in(1000,3000,5000)
+
+
+
+
+--14. Display the name, salary and commission for all employees whose commission 
+--amount is greater than their salary increased by 10%. 
+select ename,(sal+sal*0.1) as '10% salary hike',comm from employee
+where COMM> (sal+sal*0.1) 
+select * from employee
+
+
+
+--15. Display the name of all employees who have two Ls in their name and are in 
+--department 30 or their manager is 7782.
+
+select ename from Employee
+where ename like '%ll%' and DEPTNO=30 or mgrid=7782
+
+
+
+
+
+
+--16. Display the names of employees with experience of over 30 years and under 40 yrs.
+-- Count the total number of employees.
+ 
+ select ename,EMPNO,DATEDIFF(YEAR,HIREDATE,GETDATE()) as 'total experience',count(*) as 'count employees' from employee
+ where DATEDIFF(YEAR,HIREDATE,GETDATE()) >30 and DATEDIFF(YEAR,HIREDATE,GETDATE()) <40 
+ group by ename,empno,HIREDATE
+
+ 
+
+
+--17. Retrieve the names of departments in ascending order and their employees in 
+--descending order. 
+
+select b.DNAME,a.ename from Employee as a join departmet as b 
+on a.DEPTNO=b.DEPTNO
+order by b.DNAME asc,a.ENAME desc
+
+
+--18. Find out experience of MILLE 
+select EmpNo, job,sal,
+  convert(varchar(3),DATEDIFF(MONTH, HireDate, GETDATE())/12) +' years '+
+    convert(varchar(2),DATEDIFF(MONTH, HireDate, GETDATE()) % 12)+ ' months'
+    AS total_experiance
+    from Employee where EName like 'MILLER'
