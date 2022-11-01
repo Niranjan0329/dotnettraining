@@ -1,0 +1,70 @@
+
+--Normalization Assignment
+create database normalization_assignment
+
+use normalization_assignment
+create table clientdata
+(
+clintno varchar(10) primary key,
+clintname varchar(30) )
+
+
+
+
+
+create table Property_data
+(
+property_no varchar(10) primary key,
+rent int,
+owner_name varchar (30),
+adress varchar(100),
+owner_no varchar(15)
+)
+
+
+
+create table exe_1NF
+(
+	customer_no varchar(10) foreign key references clientdata(clintno),
+	Rent_start date,
+	Rent_finish date,
+	Property_no varchar(10) foreign key references Property_data( property_no)
+	)
+	  insert into exe_1nf values('CR76','2000-07-01','2001-08-31','PG4'),('CR76','2002-09-01','2002-09-01','PG16'),
+	  ('CR56','1999-09-01','2000-06-10','PG4'),('CR56','2000-10-10','2001-12-01','PG36'),('CR56','2002-1-01','2003-08-01','PG16')
+	  	 
+
+--print all the data of Clientdata table
+	  select * from clientdata
+
+	  --print all the data of Property_data table
+	  select * from Property_data
+
+	  --print all the data of exe_1NF table(customer_no,Property_no as foreign key)
+	  select  * from exe_1NF
+
+
+
+--print all the data using customer_no(references by clientdata(clintno))
+
+	  select* from  clientdata
+	  where clintno  ='CR76'
+
+	  select* from  clientdata
+	  where clintno  ='CR56'
+
+
+	  --print all the data using Property_no(references Property_data( property_no)
+	 
+	 select * from Property_data
+	 where property_no='PG4'
+
+	 select * from Property_data
+	 where property_no='PG16'
+
+	 select * from Property_data
+	 where property_no='PG36'
+
+
+
+
