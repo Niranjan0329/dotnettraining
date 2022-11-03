@@ -1,0 +1,85 @@
+--1)Write a T-SQL Program to find the factorial of a given number. 
+
+Create function factor(@number int)
+returns int
+as begin
+Declare @i int = 1,@result int=1
+while (@i<=@number)
+Begin
+	Set @result = @result * @i
+	Set @i += 1
+End
+return @result
+End
+
+Select  dbo.factor(5)
+
+
+Ans=120
+
+-------------------------------------------------------------------------------------
+--2)Create a stored procedure to generate multiplication tables up to a given number.
+
+
+create  database multiplication
+
+use multiplication
+
+create or alter procedure multiplication
+as
+begin
+declare @i int 
+set @i = 0;
+declare @j int 
+set @j= 10; 
+print 'Multipliction table for ' + convert(varchar, @j) + ':' + char(13);
+while (@i < 10) 
+begin
+ set @i = @i + 1;  
+ print('10 * '+  convert (varchar,@i) + ' = ' +convert(varchar, @i*@j));
+end
+end
+
+exec  multiplication
+
+--------------------------------------------------------------------------------
+--3)Create a trigger to restrict data manipulation on EMP table during General holidays.
+--Display the error message like “Due to Independence day you cannot manipulate data” 
+--or "Due To Diwali", you cannot manupulate" etc
+
+use infinite
+
+alter table employee
+add date_of_join date
+
+select * from employee
+
+
+create table Holiday_table
+(Holiday_name varchar(20),
+Holiday_date date)
+
+insert into holiday_table values ('Independence day','2022-08-15'),('Dasara','2022-10-04'),('Kannada Rajyostava','2022-11-01'),
+('Republic day','2022-01-26'),('Deepawali','2022-10-24')
+
+select * from holiday_table
+
+
+create or alter trigger Holiday
+on employee
+for insert,update,delete 
+as
+print 'Due to Diwali cannot manupulate the data'
+rollback;
+
+
+
+insert into employee values(20,'gowda',25000,'male',6,'67727272','2022-01-15')
+
+
+select * from employee
+
+
+
+
+
