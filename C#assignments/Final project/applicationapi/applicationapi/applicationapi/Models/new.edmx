@@ -1,0 +1,290 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="newtravelbookingsystemModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="TravelRequest">
+          <Key>
+            <PropertyRef Name="Requestid" />
+          </Key>
+          <Property Name="Requestid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RequestDate" Type="date" />
+          <Property Name="FromLocation" Type="varchar" MaxLength="50" />
+          <Property Name="ToLocation" Type="varchar" MaxLength="50" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="CurrentStatus" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="User_id" />
+          </Key>
+          <Property Name="User_id" Type="int" Nullable="false" />
+          <Property Name="Login_Id" Type="varchar" MaxLength="50" />
+          <Property Name="Password" Type="varchar" MaxLength="40" />
+          <Property Name="User_type_id" Type="int" />
+          <Property Name="Name" Type="varchar" MaxLength="40" />
+          <Property Name="Manageruserid" Type="int" />
+        </EntityType>
+        <EntityType Name="Usertype">
+          <Key>
+            <PropertyRef Name="User_type_Id" />
+          </Key>
+          <Property Name="User_type_Id" Type="int" Nullable="false" />
+          <Property Name="description" Type="varchar" MaxLength="40" />
+        </EntityType>
+        <Association Name="FK__TravelReq__UserI__4CA06362">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="TravelRequest" Type="Self.TravelRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="User_id" />
+            </Principal>
+            <Dependent Role="TravelRequest">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Users__User_type__3C69FB99">
+          <End Role="Usertype" Type="Self.Usertype" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usertype">
+              <PropertyRef Name="User_type_Id" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="User_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="employeelist" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="pendingtable" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_Storeprocuser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Requestid" Type="int" Mode="In" />
+          <Parameter Name="RequestDate" Type="date" Mode="In" />
+          <Parameter Name="fromlocation" Type="varchar" Mode="In" />
+          <Parameter Name="ToLocation" Type="varchar" Mode="In" />
+          <Parameter Name="Userid" Type="int" Mode="In" />
+          <Parameter Name="currentStatus" Type="varchar" Mode="In" />
+          <Parameter Name="Option" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="newtravelbookingsystemModel1StoreContainer">
+          <EntitySet Name="TravelRequest" EntityType="Self.TravelRequest" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usertype" EntityType="Self.Usertype" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__TravelReq__UserI__4CA06362" Association="Self.FK__TravelReq__UserI__4CA06362">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="TravelRequest" EntitySet="TravelRequest" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Users__User_type__3C69FB99" Association="Self.FK__Users__User_type__3C69FB99">
+            <End Role="Usertype" EntitySet="Usertype" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="newtravelbookingsystemModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="TravelRequest">
+          <Key>
+            <PropertyRef Name="Requestid" />
+          </Key>
+          <Property Name="Requestid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RequestDate" Type="DateTime" Precision="0" />
+          <Property Name="FromLocation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ToLocation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="CurrentStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK__TravelReq__UserI__4CA06362" FromRole="TravelRequest" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="User_id" />
+          </Key>
+          <Property Name="User_id" Type="Int32" Nullable="false" />
+          <Property Name="Login_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="User_type_id" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="Manageruserid" Type="Int32" />
+          <NavigationProperty Name="TravelRequests" Relationship="Self.FK__TravelReq__UserI__4CA06362" FromRole="Users" ToRole="TravelRequest" />
+          <NavigationProperty Name="Usertype" Relationship="Self.FK__Users__User_type__3C69FB99" FromRole="Users" ToRole="Usertype" />
+        </EntityType>
+        <EntityType Name="Usertype">
+          <Key>
+            <PropertyRef Name="User_type_Id" />
+          </Key>
+          <Property Name="User_type_Id" Type="Int32" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__Users__User_type__3C69FB99" FromRole="Usertype" ToRole="Users" />
+        </EntityType>
+        <Association Name="FK__TravelReq__UserI__4CA06362">
+          <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+          <End Role="TravelRequest" Type="Self.TravelRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="User_id" />
+            </Principal>
+            <Dependent Role="TravelRequest">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Users__User_type__3C69FB99">
+          <End Role="Usertype" Type="Self.Usertype" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usertype">
+              <PropertyRef Name="User_type_Id" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="User_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="newtravelbookingsystemEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="TravelRequests" EntityType="Self.TravelRequest" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="Usertypes" EntityType="Self.Usertype" />
+          <AssociationSet Name="FK__TravelReq__UserI__4CA06362" Association="Self.FK__TravelReq__UserI__4CA06362">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="TravelRequest" EntitySet="TravelRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Users__User_type__3C69FB99" Association="Self.FK__Users__User_type__3C69FB99">
+            <End Role="Usertype" EntitySet="Usertypes" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <FunctionImport Name="employeelist" ReturnType="Collection(newtravelbookingsystemModel1.employeelist_Result)" />
+          <FunctionImport Name="pendingtable" ReturnType="Collection(newtravelbookingsystemModel1.pendingtable_Result)" />
+          <FunctionImport Name="sp_Storeprocuser" ReturnType="Collection(newtravelbookingsystemModel1.sp_Storeprocuser_Result)">
+            <Parameter Name="Requestid" Mode="In" Type="Int32" />
+            <Parameter Name="RequestDate" Mode="In" Type="DateTime" />
+            <Parameter Name="fromlocation" Mode="In" Type="String" />
+            <Parameter Name="ToLocation" Mode="In" Type="String" />
+            <Parameter Name="Userid" Mode="In" Type="Int32" />
+            <Parameter Name="currentStatus" Mode="In" Type="String" />
+            <Parameter Name="Option" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="employeelist_Result">
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="40" />
+          <Property Type="DateTime" Name="RequestDate" Nullable="true" />
+          <Property Type="String" Name="FromLocation" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ToLocation" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CurrentStatus" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="pendingtable_Result">
+          <Property Type="Int32" Name="Requestid" Nullable="false" />
+          <Property Type="DateTime" Name="RequestDate" Nullable="true" />
+          <Property Type="String" Name="FromLocation" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ToLocation" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="UserId" Nullable="true" />
+          <Property Type="String" Name="CurrentStatus" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="sp_Storeprocuser_Result">
+          <Property Type="Int32" Name="Requestid" Nullable="false" />
+          <Property Type="DateTime" Name="RequestDate" Nullable="true" />
+          <Property Type="String" Name="FromLocation" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ToLocation" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="UserId" Nullable="true" />
+          <Property Type="String" Name="CurrentStatus" Nullable="true" MaxLength="50" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="newtravelbookingsystemModel1StoreContainer" CdmEntityContainer="newtravelbookingsystemEntities">
+          <EntitySetMapping Name="TravelRequests">
+            <EntityTypeMapping TypeName="newtravelbookingsystemModel1.TravelRequest">
+              <MappingFragment StoreEntitySet="TravelRequest">
+                <ScalarProperty Name="Requestid" ColumnName="Requestid" />
+                <ScalarProperty Name="RequestDate" ColumnName="RequestDate" />
+                <ScalarProperty Name="FromLocation" ColumnName="FromLocation" />
+                <ScalarProperty Name="ToLocation" ColumnName="ToLocation" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="CurrentStatus" ColumnName="CurrentStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="newtravelbookingsystemModel1.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="User_id" ColumnName="User_id" />
+                <ScalarProperty Name="Login_Id" ColumnName="Login_Id" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="User_type_id" ColumnName="User_type_id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Manageruserid" ColumnName="Manageruserid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usertypes">
+            <EntityTypeMapping TypeName="newtravelbookingsystemModel1.Usertype">
+              <MappingFragment StoreEntitySet="Usertype">
+                <ScalarProperty Name="User_type_Id" ColumnName="User_type_Id" />
+                <ScalarProperty Name="description" ColumnName="description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="employeelist" FunctionName="newtravelbookingsystemModel1.Store.employeelist">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="newtravelbookingsystemModel1.employeelist_Result">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="RequestDate" ColumnName="RequestDate" />
+                <ScalarProperty Name="FromLocation" ColumnName="FromLocation" />
+                <ScalarProperty Name="ToLocation" ColumnName="ToLocation" />
+                <ScalarProperty Name="CurrentStatus" ColumnName="CurrentStatus" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="pendingtable" FunctionName="newtravelbookingsystemModel1.Store.pendingtable">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="newtravelbookingsystemModel1.pendingtable_Result">
+                <ScalarProperty Name="Requestid" ColumnName="Requestid" />
+                <ScalarProperty Name="RequestDate" ColumnName="RequestDate" />
+                <ScalarProperty Name="FromLocation" ColumnName="FromLocation" />
+                <ScalarProperty Name="ToLocation" ColumnName="ToLocation" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="CurrentStatus" ColumnName="CurrentStatus" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_Storeprocuser" FunctionName="newtravelbookingsystemModel1.Store.sp_Storeprocuser">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="newtravelbookingsystemModel1.sp_Storeprocuser_Result">
+                <ScalarProperty Name="Requestid" ColumnName="Requestid" />
+                <ScalarProperty Name="RequestDate" ColumnName="RequestDate" />
+                <ScalarProperty Name="FromLocation" ColumnName="FromLocation" />
+                <ScalarProperty Name="ToLocation" ColumnName="ToLocation" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="CurrentStatus" ColumnName="CurrentStatus" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

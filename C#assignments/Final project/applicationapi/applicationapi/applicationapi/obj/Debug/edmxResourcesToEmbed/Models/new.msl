@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="newtravelbookingsystemModel1StoreContainer" CdmEntityContainer="newtravelbookingsystemEntities">
+    <EntitySetMapping Name="TravelRequests">
+      <EntityTypeMapping TypeName="newtravelbookingsystemModel1.TravelRequest">
+        <MappingFragment StoreEntitySet="TravelRequest">
+          <ScalarProperty Name="Requestid" ColumnName="Requestid" />
+          <ScalarProperty Name="RequestDate" ColumnName="RequestDate" />
+          <ScalarProperty Name="FromLocation" ColumnName="FromLocation" />
+          <ScalarProperty Name="ToLocation" ColumnName="ToLocation" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="CurrentStatus" ColumnName="CurrentStatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="newtravelbookingsystemModel1.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="User_id" ColumnName="User_id" />
+          <ScalarProperty Name="Login_Id" ColumnName="Login_Id" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="User_type_id" ColumnName="User_type_id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Manageruserid" ColumnName="Manageruserid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usertypes">
+      <EntityTypeMapping TypeName="newtravelbookingsystemModel1.Usertype">
+        <MappingFragment StoreEntitySet="Usertype">
+          <ScalarProperty Name="User_type_Id" ColumnName="User_type_Id" />
+          <ScalarProperty Name="description" ColumnName="description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="employeelist" FunctionName="newtravelbookingsystemModel1.Store.employeelist">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="newtravelbookingsystemModel1.employeelist_Result">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="RequestDate" ColumnName="RequestDate" />
+          <ScalarProperty Name="FromLocation" ColumnName="FromLocation" />
+          <ScalarProperty Name="ToLocation" ColumnName="ToLocation" />
+          <ScalarProperty Name="CurrentStatus" ColumnName="CurrentStatus" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="pendingtable" FunctionName="newtravelbookingsystemModel1.Store.pendingtable">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="newtravelbookingsystemModel1.pendingtable_Result">
+          <ScalarProperty Name="Requestid" ColumnName="Requestid" />
+          <ScalarProperty Name="RequestDate" ColumnName="RequestDate" />
+          <ScalarProperty Name="FromLocation" ColumnName="FromLocation" />
+          <ScalarProperty Name="ToLocation" ColumnName="ToLocation" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="CurrentStatus" ColumnName="CurrentStatus" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_Storeprocuser" FunctionName="newtravelbookingsystemModel1.Store.sp_Storeprocuser">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="newtravelbookingsystemModel1.sp_Storeprocuser_Result">
+          <ScalarProperty Name="Requestid" ColumnName="Requestid" />
+          <ScalarProperty Name="RequestDate" ColumnName="RequestDate" />
+          <ScalarProperty Name="FromLocation" ColumnName="FromLocation" />
+          <ScalarProperty Name="ToLocation" ColumnName="ToLocation" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="CurrentStatus" ColumnName="CurrentStatus" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

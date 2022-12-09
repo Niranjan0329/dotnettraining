@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="newtravelbookingsystemModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="TravelRequest">
+    <Key>
+      <PropertyRef Name="Requestid" />
+    </Key>
+    <Property Name="Requestid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RequestDate" Type="DateTime" Precision="0" />
+    <Property Name="FromLocation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ToLocation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="CurrentStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="User" Relationship="Self.FK__TravelReq__UserI__4CA06362" FromRole="TravelRequest" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="User_id" />
+    </Key>
+    <Property Name="User_id" Type="Int32" Nullable="false" />
+    <Property Name="Login_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="User_type_id" Type="Int32" />
+    <Property Name="Name" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="Manageruserid" Type="Int32" />
+    <NavigationProperty Name="TravelRequests" Relationship="Self.FK__TravelReq__UserI__4CA06362" FromRole="Users" ToRole="TravelRequest" />
+    <NavigationProperty Name="Usertype" Relationship="Self.FK__Users__User_type__3C69FB99" FromRole="Users" ToRole="Usertype" />
+  </EntityType>
+  <EntityType Name="Usertype">
+    <Key>
+      <PropertyRef Name="User_type_Id" />
+    </Key>
+    <Property Name="User_type_Id" Type="Int32" Nullable="false" />
+    <Property Name="description" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Users" Relationship="Self.FK__Users__User_type__3C69FB99" FromRole="Usertype" ToRole="Users" />
+  </EntityType>
+  <Association Name="FK__TravelReq__UserI__4CA06362">
+    <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+    <End Role="TravelRequest" Type="Self.TravelRequest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="User_id" />
+      </Principal>
+      <Dependent Role="TravelRequest">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Users__User_type__3C69FB99">
+    <End Role="Usertype" Type="Self.Usertype" Multiplicity="0..1" />
+    <End Role="Users" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usertype">
+        <PropertyRef Name="User_type_Id" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="User_type_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="newtravelbookingsystem" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="TravelRequests" EntityType="Self.TravelRequest" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <EntitySet Name="Usertypes" EntityType="Self.Usertype" />
+    <AssociationSet Name="FK__TravelReq__UserI__4CA06362" Association="Self.FK__TravelReq__UserI__4CA06362">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="TravelRequest" EntitySet="TravelRequests" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Users__User_type__3C69FB99" Association="Self.FK__Users__User_type__3C69FB99">
+      <End Role="Usertype" EntitySet="Usertypes" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <FunctionImport Name="employeelist" ReturnType="Collection(newtravelbookingsystemModel.employeelist_Result)" />
+    <FunctionImport Name="pendingtable" ReturnType="Collection(newtravelbookingsystemModel.pendingtable_Result)" />
+    <FunctionImport Name="sp_Storeprocuser">
+      <Parameter Name="Requestid" Mode="In" Type="Int32" />
+      <Parameter Name="Request_Date" Mode="In" Type="DateTime" />
+      <Parameter Name="from_location" Mode="In" Type="String" />
+      <Parameter Name="To_Location" Mode="In" Type="String" />
+      <Parameter Name="Userid" Mode="In" Type="Int32" />
+      <Parameter Name="current_Status" Mode="In" Type="String" />
+      <Parameter Name="Option" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="employeelist_Result">
+    <Property Type="String" Name="Name" Nullable="true" MaxLength="40" />
+    <Property Type="DateTime" Name="RequestDate" Nullable="true" />
+    <Property Type="String" Name="FromLocation" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ToLocation" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="CurrentStatus" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="pendingtable_Result">
+    <Property Type="Int32" Name="Requestid" Nullable="false" />
+    <Property Type="DateTime" Name="RequestDate" Nullable="true" />
+    <Property Type="String" Name="FromLocation" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ToLocation" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="UserId" Nullable="true" />
+    <Property Type="String" Name="CurrentStatus" Nullable="true" MaxLength="50" />
+  </ComplexType>
+</Schema>
